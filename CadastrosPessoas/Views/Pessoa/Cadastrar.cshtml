@@ -1,0 +1,108 @@
+﻿@model CadastrosPessoas.ViewModels.PessoaViewModel
+@{
+    ViewBag.Title = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastrar</h2>
+@using(Html.BeginForm("CadastrarPost", "Pessoa", FormMethod.Post)) {
+    <div class="form-group mb-3">
+        <label for="Nome">Nome:</label>
+        <input type="text" class="form-control" id="Nome" name="nome">
+    </div>
+    <div class="form-group mb-3">
+        <label for="DataNascimento">Data de Nascimento:</label>
+        <input type="date" class="form-control" id="DataNascimento" name="DataNascimento">
+    </div>
+    <div class="form-row mb-3">
+        <label for="SexoMasculino">Sexo:</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="Sexo" id="SexoMasculino" value="M">
+            <label class="form-check-label" for="SexoMasculino">Masculino</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="Sexo" id="SexoFeminino" value="F">
+            <label class="form-check-label" for="SexoFeminino">Feminino</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="EstadoCivil">Estado Civil:</label>
+            <select class="form-select" id="EstadoCivil" name="EstadoCivil">
+                <option selected value>Selecione um estado civil</option>
+                <option>Solteiro(a)</option>
+                <option>Casado(a)</option>
+                <option>Divorciado(a)</option>
+            </select>
+        </div>
+        <div class="col mb-3">
+            <label for="CPF">CPF:</label>
+            <input type="text" class="form-control" id="CPF" name="CPF">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="CEP">CEP:</label>
+            <input type="text" class="form-control" id="CEP" name="CEP">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="Endereco">Endereço:</label>
+            <input type="text" class="form-control" id="Endereco" name="Endereco">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="Numero">Numero:</label>
+            <input type="text" class="form-control" id="Numero" name="Numero">
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="Complemento">Complemento:</label>
+            <input type="text" class="form-control" id="Complemento" name="Complemento">
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="Bairro">Bairro:</label>
+            <input type="text" class="form-control" id="Bairro" name="Bairro">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="Cidade">Cidade:</label>
+            <input type="text" class="form-control" id="Cidade" name="Cidade">
+        </div>
+        <div class="col mb-3">
+            <label for="UF">UF:</label>
+            <select class="form-select" id="UF" name="UF">
+                <option selected value>Selecione uma opção</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espirito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+        </div>
+    </div>
+    <div></div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

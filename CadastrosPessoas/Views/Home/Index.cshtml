@@ -1,53 +1,101 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-    Layout = null;
-}
-<html>
-<head>
-    <title>Cadastro de Pessoas</title>
-    <link href="~/Content/primeiroCSS.css" rel="stylesheet" />
+﻿@section scripts{
     <script src="~/Scripts/funcoes.js"></script>
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-</head>
-<body>
-    <div>
-        <label>valor 1</label> <input type="text" id="valor1" />
-    </div>
-    <div>
-        <label>valor 2</label> <input type="text" id="valor2" />
-    </div>
+}
 
-    @*<p id="paragrafo" style="color: red;"> Texto qualquer</p>
-        <p id="paragrafo2" style="color: red;"> Texto qualquer2</p>*@
-    <p id="resultado"></p>
-    <p id="meutexto"> Vai mudar der cor</p>
-    <button onclick="mostrarResultado()">somar</button>
-    @*<button style="color: red; "onclick="alert('olá,mundo')";>BOTAO</button>*@
-    @*<input  type="text" onblur="alert('onblur disparou')"/>*@
-    
+<div class="container">
+    <div class="box">
+        <div class="label">
+            <label>Valor 1 </label> <input type="text" id="valor1" />
+
+        </div>
+        <div class="label">
+            <label>Valor 2 </label>
+            <input type="text" id="valor2" />
+        </div>
+        <div class="label">
+            <button onclick="mostrarResultado()" type="button" class="btn btn-success">Somar</button>
+        </div>
+        <hr>
+        <p id="resultado"></p>
+        <hr>
+    </div>
+</div>
+<div class="text-success">
+</div>
+
+<hr class="border border-danger border-2 opacity-50">
+<hr class="border border-primary border-3 opacity-75">
 <div>
-    <label>digite uma cor </label><input type="text" id="cor"/>
+    <p id="meutexto"> Vai mudar der cor</p>
+    <label>digite uma cor </label><input type="text" id="cor" />
     <button onclick="mudarCor()">Mudar cor</button>
 </div>
-    <button onclick="">Mostrar valor da variavel nome</button>
-    <div>
-        <button onclick="alterarParagrafo('green', '20pt', 'Verde e tamanho 20', 'paragrafo')">Verde e tamanho 20</button>
-        <button onclick="alterarParagrafo('blue', '20pt', 'azul e tamanho 15', 'paragrafo2')">Azul e tamanho 15</button>
-    </div>
-    <div>
-        <button onclick="mostrarMarcasDeCarro()">Mostrar</button>
-    </div>
-    <div>
-        <input type="text" id="nome"/>
-        <p id="respostas"></p>
-    </div>
+<div>
+    <button onclick="alterarParagrafo('green', '20pt', 'Verde e tamanho 20', 'paragrafo')">Verde e tamanho 20</button>
+    <button onclick="alterarParagrafo('blue', '20pt', 'azul e tamanho 15', 'paragrafo2')">Azul e tamanho 15</button>
+</div>
+<div>
+    <button onclick="mostrarMarcasDeCarro()">Mostrar</button>
+</div>
+<div>
+    <input type="text" id="nome" />
+    <p id="respostas"></p>
+</div>
 
-    <div>
-        <p>Parafrago 1</p>
-        <p>Parafrago 2</p>
-        <p>Parafrago 3</p>
-        <p>Parafrago 4</p>
+<div class="label">
+    <p>Parafrago 1</p>
+</div>
+<hr class="border border-danger border-2 opacity-50">
+<div class="label">
+    <p>Parafrago 2</p>
+</div>
+<hr class="border border-primary border-3 opacity-75">
+<div class="label">
+    <p>Parafrago 3</p>
+</div>
+<hr class="border border-primary border-3 opacity-75">
+<div class="label">
+    <p>Parafrago 4</p>
+</div>
+<div id="vuejs">
+    <p v-show="paragrafoVisivel">Paragrafo qualquer</p>
+    <button v-on:click="paragrafoVisivel = !paragrafoVisivel" {{paragrafoVisivel ? 'Esconder':'Mostrar'}}></button>
+    <script src="~/Scripts/vue.min.js"></script>
+</div>
+<p class="h2">Listagem</p>
+<div id="cadastroPessoas">
+    <div class="mb-3">
+        <label>Nome</label>
+        <input type="text" class="form-control" v-model="novaPessoa.nome">
     </div>
-</body>
+    <div class="mb-3">
+        <label>Sobrenome</label>
+        <input type="text" class="form-control" v-model="novaPessoa.sobrenome">
+    </div>
+    <div class="mb-3">
+        <label>Idade</label>
+        <input type="text" class="form-control" v-model="novaPessoa.idade">
+    </div>
+    <button type="submit" class="btn btn-primary" v-on:click="cadastrar">Cadastrar</button>
+    {{novaPessoa | json}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Idade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item, index) in pessoasVue">
 
-</html>
+                <th scope="row">{{ index + 1 }}</th>
+                <td>{{ item.nome }}</td>
+                <td>{{ item.sobrenome }}</td>
+                <td>{{ item.idade }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.Partial("_UL")
